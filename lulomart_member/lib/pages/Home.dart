@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/pages/Profile.dart';
 import 'package:lulomart_member/pages/Store.dart';
 
 class Home extends StatelessWidget {
@@ -19,9 +20,7 @@ class Home extends StatelessWidget {
             Container(
               color: Colors.blue,
             ),
-            Container(
-              color: Colors.yellow,
-            ),
+            Profile(),
           ],
         ),
         bottomNavigationBar: Container(
@@ -31,7 +30,14 @@ class Home extends StatelessWidget {
               Tab(
                 text: 'Home',
                 icon: Icon(
-                  FontAwesomeIcons.solidCompass,
+                  FontAwesomeIcons.home,
+                  size: 18,
+                ),
+              ),
+              Tab(
+                text: 'Search',
+                icon: Icon(
+                  FontAwesomeIcons.compass,
                   size: 18,
                 ),
               ),
@@ -45,14 +51,7 @@ class Home extends StatelessWidget {
               Tab(
                 text: 'Home',
                 icon: Icon(
-                  FontAwesomeIcons.ship,
-                  size: 18,
-                ),
-              ),
-              Tab(
-                text: 'Home',
-                icon: Icon(
-                  FontAwesomeIcons.user,
+                  FontAwesomeIcons.userAlt,
                   size: 18,
                 ),
               ),

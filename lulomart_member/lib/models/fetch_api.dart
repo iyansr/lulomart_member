@@ -6,10 +6,15 @@ import 'package:http/http.dart' as http;
 import 'package:lulomart_member/models/product.dart';
 
 Future<List<Product>> fetchProduct(http.Client client) async {
-  final response = await client.get(
-      'https://www.lulomart.com/inventory/index.php/api/productbycategory?productcategory_id=');
+  try {
+    final response = await client.get(
+        'https://www.lulomart.com/inventory/index.php/api/productbycategory?productcategory_id=');
+    return compute(parseData, response.body);
+  } catch (e) {
+    print(e);
+  }
+
   // Use the compute function to run parsePhotos in a separate isolate
-  return compute(parseData, response.body);
 }
 
 // A function that will convert a response body into a List<Country>

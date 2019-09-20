@@ -7,6 +7,13 @@ class Styles {
     );
   }
 
+  TextStyle boldText20() {
+    return TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+    );
+  }
+
   TextStyle boldTextWhite() {
     return TextStyle(
       color: Colors.white,
