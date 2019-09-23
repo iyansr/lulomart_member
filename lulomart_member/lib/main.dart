@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/pages/Home.dart';
-import 'package:lulomart_member/pages/Login.dart';
 
 void main() => runApp(LuloMartMember());
 

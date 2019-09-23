@@ -17,7 +17,7 @@ class StoreFunction {
         fit: BoxFit.cover,
       );
     }
-    if (jam >= 18 && jam <= 03) {
+    if (jam >= 15 && jam <= 24) {
       return Image.asset(
         'images/malam.jpg',
         fit: BoxFit.cover,

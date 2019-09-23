@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
-import 'package:lulomart_member/models/kategori_list.dart';
 import 'package:lulomart_member/models/product.dart';
 import 'package:lulomart_member/utils/store_function.dart';
 import 'package:lulomart_member/utils/styles.dart';
+import 'package:lulomart_member/widgets/outlet_card.dart';
 import 'package:lulomart_member/widgets/product_grid.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,7 +19,7 @@ class _StoreState extends State<Store> {
 
   StoreFunction _storeFn = StoreFunction();
   Styles _fontStyle = Styles();
-  KategoriList _kategori = KategoriList();
+
   @override
   void initState() {
     super.initState();
@@ -40,13 +39,6 @@ class _StoreState extends State<Store> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
-
     //============ Build ===================
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -54,7 +46,7 @@ class _StoreState extends State<Store> {
         backgroundColor: Colors.red,
         child: Icon(FontAwesomeIcons.chevronUp),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
         controller: _scrollController,
         physics: BouncingScrollPhysics(),
@@ -135,109 +127,47 @@ class _StoreState extends State<Store> {
                 ),
               ],
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 90),
 
-            //========== Outlet Start ====================
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Outlet',
-                      style: _fontStyle.boldText(),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        'Lihat Semua',
-                        style: _fontStyle.linkTextNormal(),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 100,
-              // width: 100,
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: ListView.builder(
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Container(
-                  height: 100,
-                  width: 100,
-                  child: Card(
-                    child: Center(
-                      child: Text(
-                        'Outlet',
-                        style: _fontStyle.linkTextNormal(),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            //========== Outlet End ====================
-            SizedBox(height: 20),
-            //========== Kategori Start ====================
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text(
-                  'Kategori',
-                  style: _fontStyle.boldText(),
-                ),
-              ),
-            ),
-            Container(
-              height: 40,
-              // width: 100,
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: ListView.builder(
-                itemCount: _kategori.kategori.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, id) => Container(
-                    // height: 40,
-                    // width: 110,
-                    child: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: RaisedButton(
-                    color: Colors.red,
-                    onPressed: () {},
-                    child: Text(
-                      '${_kategori.kategori[id]['nama']}',
-                      style: _fontStyle.textWhite(),
-                    ),
-                  ),
-                )),
-              ),
-            ),
-            //=============== Kategori End ====================
-            // =========== Product Start ===================
+            OutletCard(),
+            SizedBox(height: 8),
+            // CategoryBtn(),
+            // SizedBox(height: 8),
+
             FutureBuilder<List<Product>>(
               future: fetchProduct(http.Client()),
               builder: (c, snap) {
-                if (snap.hasError) {
-                  return snap.error;
-                }
-
-                return snap.hasData
-                    ? Container(
-                        child: ProductGridView(
-                          product: snap.data,
-                        ),
-                      )
-                    : Container(
-                        height: 100,
-                        child: Center(
+                switch (snap.connectionState) {
+                  case ConnectionState.none:
+                    break;
+                  case ConnectionState.waiting:
+                    return Container(
+                        color: Colors.white,
+                        height: 300,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 64),
+                          alignment: Alignment.topCenter,
                           child: CircularProgressIndicator(),
-                        ),
-                      );
+                        ));
+                    break;
+                  default:
+                    return Container(
+                      color: Colors.white,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 16.0, top: 16.0),
+                            child: Text('Rekomendasi'),
+                          ),
+                          ProductGridView(
+                            product: snap.data,
+                          ),
+                        ],
+                      ),
+                    );
+                }
               },
             )
             // =========== Product End ===================

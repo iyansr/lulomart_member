@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/pages/Point.dart';
 import 'package:lulomart_member/utils/styles.dart';
 
 class Profile extends StatelessWidget {
@@ -63,7 +65,13 @@ class Profile extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(
+                        builder: (context) => PointPage(),
+                      ),
+                    );
+                  },
                   contentPadding: EdgeInsets.all(0),
                   title: Text('Point'),
                   trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
