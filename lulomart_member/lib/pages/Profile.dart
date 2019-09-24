@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/pages/Generasi.dart';
 import 'package:lulomart_member/pages/Point.dart';
 import 'package:lulomart_member/utils/styles.dart';
 
@@ -20,23 +21,11 @@ class Profile extends StatelessWidget {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Container(
-                        width: 80.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff7c94b6),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'https://www.meme-arsenal.com/memes/4707e9844b35bf2fbddaf86d7d43470c.jpg'),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(60.0)),
-                          border: Border.all(
-                            color: Colors.red,
-                            width: 3.0,
-                          ),
-                        ),
-                      ),
+                      CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 40,
+                          backgroundImage: NetworkImage(
+                              'https://www.cheatsheet.com/wp-content/uploads/2019/05/robert-downey-jr-avengers-endgame.jpg')),
                       SizedBox(width: 16),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +67,13 @@ class Profile extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(
+                        builder: (context) => Generasi(),
+                      ),
+                    );
+                  },
                   contentPadding: EdgeInsets.all(0),
                   title: Text('Generasi'),
                   trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
