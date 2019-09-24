@@ -21,8 +21,8 @@ class Profile extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Container(
-                        width: 120.0,
-                        height: 120.0,
+                        width: 80.0,
+                        height: 80.0,
                         decoration: BoxDecoration(
                           color: const Color(0xff7c94b6),
                           image: DecorationImage(
