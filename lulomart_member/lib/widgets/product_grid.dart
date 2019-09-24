@@ -13,42 +13,53 @@ class ProductGridView extends StatelessWidget {
   Card getStructuredGridCell(Product product) {
     Styles _fontStyle = Styles();
     return Card(
-        // color: Colors.red,
-        elevation: 0,
-        child: InkWell(
-          onTap: () {
-            print('${product.name}');
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            verticalDirection: VerticalDirection.down,
-            children: <Widget>[
-              CachedNetworkImage(
-                placeholder: (c, img) => Image.asset(
-                  'images/loading.gif',
-                  height: 130,
-                  width: 100,
-                ),
-                imageUrl: 'https://www.lulomart.com/inventory/upload/product/' +
-                    product.picture,
-                height: 130.0,
-                width: 100.0,
-                fit: BoxFit.cover,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10.0, top: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(product.name, style: _fontStyle.boldText()),
-                    Text('Rp. ${product.price} ,-'),
-                  ],
-                ),
-              )
-            ],
+      // color: Colors.red,
+      elevation: 0,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        verticalDirection: VerticalDirection.down,
+        children: <Widget>[
+          CachedNetworkImage(
+            placeholder: (c, img) => Image.asset(
+              'images/loading.gif',
+              height: 130,
+              width: 100,
+            ),
+            imageUrl: 'https://www.lulomart.com/inventory/upload/product/' +
+                product.picture,
+            height: 130.0,
+            width: 100.0,
+            fit: BoxFit.cover,
           ),
-        ));
+          Padding(
+            padding: EdgeInsets.only(left: 10.0, top: 10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  product.name,
+                  textAlign: TextAlign.center,
+                ),
+                Text('Rp. ${product.price} ,-',
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.w700)),
+              ],
+            ),
+          ),
+          RaisedButton(
+            color: Colors.red,
+            elevation: 0,
+            onPressed: () {},
+            child: Text(
+              'Beli',
+              style: _fontStyle.textWhite(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -58,8 +69,8 @@ class ProductGridView extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       primary: true,
       crossAxisCount: 2,
-      childAspectRatio: 0.80,
-      children: List.generate(8, (index) {
+      childAspectRatio: 0.70,
+      children: List.generate(product.length, (index) {
         return getStructuredGridCell(product[index]);
       }),
     );

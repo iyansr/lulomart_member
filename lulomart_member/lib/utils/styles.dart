@@ -14,6 +14,14 @@ class Styles {
     );
   }
 
+  TextStyle boldText20black() {
+    return TextStyle(
+      color: Colors.black87,
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+    );
+  }
+
   TextStyle boldTextWhite() {
     return TextStyle(
       color: Colors.white,

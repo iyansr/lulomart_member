@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/pages/Discover.dart';
 import 'package:lulomart_member/pages/Profile.dart';
 import 'package:lulomart_member/pages/Store.dart';
 
@@ -20,9 +21,7 @@ class Home extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             Store(),
-            Container(
-              color: Colors.green,
-            ),
+            Discover(),
             Container(
               color: Colors.blue,
             ),
@@ -41,7 +40,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               Tab(
-                text: 'Search',
+                text: 'Belanja',
                 icon: Icon(
                   FontAwesomeIcons.compass,
                   size: 18,
@@ -55,7 +54,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               Tab(
-                text: 'Home',
+                text: 'Profile',
                 icon: Icon(
                   FontAwesomeIcons.userAlt,
                   size: 18,

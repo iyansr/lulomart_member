@@ -41,12 +41,7 @@ class _StoreState extends State<Store> {
   Widget build(BuildContext context) {
     //============ Build ===================
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: _scrollToTop,
-        backgroundColor: Colors.red,
-        child: Icon(FontAwesomeIcons.chevronUp),
-      ),
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         controller: _scrollController,
         physics: BouncingScrollPhysics(),
@@ -58,6 +53,7 @@ class _StoreState extends State<Store> {
               alignment: Alignment.center,
               children: <Widget>[
                 //Gambar Leading
+
                 Container(
                   height: 140,
                   width: MediaQuery.of(context).size.width,
@@ -67,15 +63,6 @@ class _StoreState extends State<Store> {
                   ),
                 ),
 
-                //Text Greetings
-                Positioned(
-                  top: 50,
-                  right: 20,
-                  left: 20,
-                  child: _storeFn.setTextAtas(),
-                ),
-
-                //Card Atas
                 Positioned(
                   top: 90,
                   right: 8,
@@ -125,12 +112,26 @@ class _StoreState extends State<Store> {
                     ),
                   ),
                 ),
+
+                //Text Greetings
+                Positioned(
+                  top: 50,
+                  right: 20,
+                  left: 20,
+                  child: _storeFn.setTextAtas(),
+                ),
+                //Card Atas
               ],
             ),
-            SizedBox(height: 90),
-
+            SizedBox(
+              height: 90,
+            ),
             OutletCard(),
-            SizedBox(height: 8),
+
+            Container(
+              height: 9,
+              color: Colors.grey[50],
+            ),
             // CategoryBtn(),
             // SizedBox(height: 8),
 
@@ -159,7 +160,10 @@ class _StoreState extends State<Store> {
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 16.0, top: 16.0),
-                            child: Text('Rekomendasi'),
+                            child: Text(
+                              'Rekomendasi',
+                              style: _fontStyle.boldText(),
+                            ),
                           ),
                           ProductGridView(
                             product: snap.data,
