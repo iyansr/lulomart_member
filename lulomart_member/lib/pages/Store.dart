@@ -7,6 +7,7 @@ import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/outlet_card.dart';
 import 'package:lulomart_member/widgets/product_grid.dart';
 import 'package:http/http.dart' as http;
+import 'package:lulomart_member/widgets/rekomendasi_grid.dart';
 
 class Store extends StatefulWidget {
   @override
@@ -158,14 +159,23 @@ class _StoreState extends State<Store> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
-                            padding:
-                                const EdgeInsets.only(left: 16.0, top: 16.0),
-                            child: Text(
-                              'Rekomendasi',
-                              style: _fontStyle.boldText(),
+                            padding: const EdgeInsets.only(
+                                left: 16.0, top: 16.0, right: 16.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Rekomendasi',
+                                  style: _fontStyle.boldText(),
+                                ),
+                                Text(
+                                  'Lihat Semua',
+                                  style: _fontStyle.linkText(),
+                                ),
+                              ],
                             ),
                           ),
-                          ProductGridView(
+                          RekomendasiGrid(
                             product: snap.data,
                           ),
                         ],

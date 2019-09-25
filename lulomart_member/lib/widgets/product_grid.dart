@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:lulomart_member/models/product.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -12,6 +13,19 @@ class ProductGridView extends StatelessWidget {
 
   Card getStructuredGridCell(Product product) {
     Styles _fontStyle = Styles();
+
+    FlutterMoneyFormatter fmf = new FlutterMoneyFormatter(
+      amount: double.parse(product.price),
+      settings: MoneyFormatterSettings(
+        symbol: 'Rp',
+        thousandSeparator: '.',
+        decimalSeparator: ',',
+        symbolAndNumberSeparator: ' ',
+        fractionDigits: 0,
+        compactFormatType: CompactFormatType.short,
+      ),
+    );
+
     return Card(
       // color: Colors.red,
       elevation: 0,
@@ -42,7 +56,7 @@ class ProductGridView extends StatelessWidget {
                   product.name,
                   textAlign: TextAlign.center,
                 ),
-                Text('Rp. ${product.price} ,-',
+                Text('${fmf.output.symbolOnLeft}',
                     style: TextStyle(
                         color: Colors.red, fontWeight: FontWeight.w700)),
               ],

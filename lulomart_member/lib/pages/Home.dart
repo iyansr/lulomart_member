@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/pages/Cart.dart';
 import 'package:lulomart_member/pages/Discover.dart';
 import 'package:lulomart_member/pages/Profile.dart';
 import 'package:lulomart_member/pages/Store.dart';
@@ -22,9 +23,7 @@ class Home extends StatelessWidget {
           children: <Widget>[
             Store(),
             Discover(),
-            Container(
-              color: Colors.blue,
-            ),
+            CartPage(),
             Profile(),
           ],
         ),
@@ -47,7 +46,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               Tab(
-                text: 'Chart',
+                text: 'Cart',
                 icon: Icon(
                   FontAwesomeIcons.shoppingBag,
                   size: 18,

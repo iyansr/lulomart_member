@@ -29,7 +29,7 @@ class OutletCard extends StatelessWidget {
                     onTap: () {},
                     child: Text(
                       'Lihat Semua',
-                      style: _fontStyle.linkTextNormal(),
+                      style: _fontStyle.linkText(),
                     ),
                   ),
                 ],

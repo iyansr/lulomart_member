@@ -23,30 +23,16 @@ class Profile extends StatelessWidget {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      // CircleAvatar(
-                      //   backgroundColor: Colors.transparent,
-                      //   radius: 40,
-                      //   backgroundImage: NetworkImage(
-                      //       'https://www.cheatsheet.com/wp-content/uploads/2019/05/robert-downey-jr-avengers-endgame.jpg'),
-                      // ),
                       CircularProfileAvatar(
                         'https://www.cheatsheet.com/wp-content/uploads/2019/05/robert-downey-jr-avengers-endgame.jpg', //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
-                        backgroundColor: Colors
-                            .transparent, // sets background color, default Colors.white
-                        borderWidth: 3, // sets border, default 0.0
+                        backgroundColor: Colors.transparent,
+                        borderWidth: 3,
                         initialsText: Text(
                           "AD",
                           style: TextStyle(fontSize: 40, color: Colors.white),
-                        ), // sets initials text, set your own style, default Text('')
-                        borderColor: Colors
-                            .red, // sets border color, default Colors.white
-                        elevation:
-                            5.0, // sets elevation (shadow of the profile picture), default value is 0.0
-                        cacheImage:
-                            true, // allow widget to cache image against provided url
-                        onTap: () {
-                          print('adil');
-                        }, // sets on tap
+                        ),
+                        borderColor: Colors.red,
+                        cacheImage: true,
                       ),
                       SizedBox(width: 16),
                       Column(
