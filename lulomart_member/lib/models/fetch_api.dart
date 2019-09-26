@@ -1,19 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:async/async.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:lulomart_member/models/product.dart';
 
-Future<List<Product>> fetchProduct(http.Client client) async {
+final AsyncMemoizer<List<Product>> _memoizer = AsyncMemoizer();
+Future<List<Product>> fetchProduct(http.Client client) {
   try {
-    final response = await client.get(
-        'https://www.lulomart.com/inventory/index.php/api/productbycategory?productcategory_id=');
-    return compute(parseData, response.body);
+    return _memoizer.runOnce(() async {
+      final response = await client.get(
+          'https://www.lulomart.com/inventory/index.php/api/productbycategory?productcategory_id=');
+      return compute(parseData, response.body);
+    });
   } catch (e) {
     print(e);
   }
-
   // Use the compute function to run parsePhotos in a separate isolate
 }
 

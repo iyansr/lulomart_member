@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
 import 'package:lulomart_member/models/product.dart';
-import 'package:lulomart_member/utils/store_function.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/outlet_card.dart';
-import 'package:lulomart_member/widgets/product_grid.dart';
 import 'package:http/http.dart' as http;
 import 'package:lulomart_member/widgets/rekomendasi_grid.dart';
+import 'package:lulomart_member/widgets/store_stacked_widget.dart';
 
 class Store extends StatefulWidget {
   @override
@@ -18,7 +16,6 @@ class _StoreState extends State<Store> {
   ScrollController _scrollController;
   //Set Warna Statusbar
 
-  StoreFunction _storeFn = StoreFunction();
   Styles _fontStyle = Styles();
 
   @override
@@ -33,11 +30,6 @@ class _StoreState extends State<Store> {
     super.dispose();
   }
 
-  _scrollToTop() {
-    _scrollController.animateTo(_scrollController.position.minScrollExtent,
-        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
-  }
-
   @override
   Widget build(BuildContext context) {
     //============ Build ===================
@@ -49,81 +41,7 @@ class _StoreState extends State<Store> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Stack(
-              overflow: Overflow.visible,
-              alignment: Alignment.center,
-              children: <Widget>[
-                //Gambar Leading
-
-                Container(
-                  height: 140,
-                  width: MediaQuery.of(context).size.width,
-                  child: Opacity(
-                    opacity: 0.4,
-                    child: _storeFn.setGambarAtas(),
-                  ),
-                ),
-
-                Positioned(
-                  top: 90,
-                  right: 8,
-                  left: 8,
-                  child: Container(
-                    height: 130,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'Jumlah Point Anda Saat Ini :',
-                                      style: _fontStyle.boldText(),
-                                    ),
-                                    Text(
-                                      '6.915',
-                                      style: _fontStyle.boldText(),
-                                    ),
-                                  ],
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Text(
-                                    'Tambah Point',
-                                    style: _fontStyle.linkText(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Image.asset('images/storefront.png',
-                                fit: BoxFit.cover)
-                          ],
-                        ), //Text('Hello'),
-                      ),
-                    ),
-                  ),
-                ),
-
-                //Text Greetings
-                Positioned(
-                  top: 50,
-                  right: 20,
-                  left: 20,
-                  child: _storeFn.setTextAtas(),
-                ),
-                //Card Atas
-              ],
-            ),
+            StackedWidget(),
             SizedBox(
               height: 90,
             ),
