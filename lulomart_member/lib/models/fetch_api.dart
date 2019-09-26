@@ -12,15 +12,15 @@ Future<List<Product>> fetchProduct(http.Client client) {
     return _memoizer.runOnce(() async {
       final response = await client.get(
           'https://www.lulomart.com/inventory/index.php/api/productbycategory?productcategory_id=');
+      // Use the compute function to run parsePhotos in a separate isolate
       return compute(parseData, response.body);
     });
   } catch (e) {
     print(e);
   }
-  // Use the compute function to run parsePhotos in a separate isolate
 }
 
-// A function that will convert a response body into a List<Country>
+// A function that will convert a response body into a List<Product>
 List<Product> parseData(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
 
