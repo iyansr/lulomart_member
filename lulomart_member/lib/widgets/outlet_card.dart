@@ -44,7 +44,7 @@ class OutletCard extends StatelessWidget {
               itemCount: _outlet.outlet.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
-                height: 80,
+                height: 90,
                 width: 100,
                 child: Card(
                   shape: RoundedRectangleBorder(

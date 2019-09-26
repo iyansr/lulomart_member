@@ -8,8 +8,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductGridView extends StatelessWidget {
   final List<Product> product;
+  final int len;
 
-  ProductGridView({Key key, this.product}) : super(key: key);
+  ProductGridView({Key key, this.product, this.len}) : super(key: key);
 
   Card getStructuredGridCell(Product product) {
     Styles _fontStyle = Styles();
@@ -84,7 +85,7 @@ class ProductGridView extends StatelessWidget {
       primary: true,
       crossAxisCount: 2,
       childAspectRatio: 0.70,
-      children: List.generate(product.length, (index) {
+      children: List.generate(len, (index) {
         return getStructuredGridCell(product[index]);
       }),
     );
