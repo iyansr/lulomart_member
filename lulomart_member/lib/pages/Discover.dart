@@ -28,10 +28,11 @@ class _DiscoverState extends State<Discover> {
     _controller.addListener(() {
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
         setState(() {
+          len = len + 6;
+
           if (len > _pr.length) {
             len = _pr.length;
           }
-          len = len + 6;
         });
       }
     });

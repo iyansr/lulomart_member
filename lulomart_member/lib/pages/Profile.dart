@@ -1,16 +1,33 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lulomart_member/pages/Generasi.dart';
+import 'package:lulomart_member/pages/GenerasiCard.dart';
 import 'package:lulomart_member/pages/Point.dart';
 import 'package:lulomart_member/pages/Referal.dart';
+import 'package:lulomart_member/pages/RiwayatTransaksi.dart';
+import 'package:lulomart_member/pages/Tentang.dart';
 import 'package:lulomart_member/utils/styles.dart';
+import 'package:lulomart_member/widgets/profile_listTile.dart';
 
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Styles _style = Styles();
+
+    List<String> _title = [
+      'Riwayat Transaksi',
+      'Point',
+      'Generasi',
+      'Referal Saya',
+      'Tentang Aplikasi',
+    ];
+    List<Widget> _pages = [
+      RiwayatTransaksi(),
+      PointPage(),
+      GenerasiPage(),
+      MyReferal(),
+      Tentang(),
+    ];
 
     return Scaffold(
       body: SafeArea(
@@ -54,59 +71,19 @@ class Profile extends StatelessWidget {
                 SizedBox(
                   height: 16,
                 ),
-                ListTile(
-                  onTap: () {},
-                  contentPadding: EdgeInsets.all(0),
-                  title: Text('Riwayat Transaksi'),
-                  trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
+                ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (_, i) => Divider(),
+                  itemCount: 5,
+                  itemBuilder: (_, i) => ProfileListView(
+                    title: _title[i],
+                    onTap: () {
+                      Navigator.of(context).push(
+                        CupertinoPageRoute(builder: (context) => _pages[i]),
+                      );
+                    },
+                  ),
                 ),
-                Divider(),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      CupertinoPageRoute(
-                        builder: (context) => PointPage(),
-                      ),
-                    );
-                  },
-                  contentPadding: EdgeInsets.all(0),
-                  title: Text('Point'),
-                  trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
-                ),
-                Divider(),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      CupertinoPageRoute(
-                        builder: (context) => Generasi(),
-                      ),
-                    );
-                  },
-                  contentPadding: EdgeInsets.all(0),
-                  title: Text('Generasi'),
-                  trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
-                ),
-                Divider(),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      CupertinoPageRoute(
-                        builder: (context) => MyReferal(),
-                      ),
-                    );
-                  },
-                  contentPadding: EdgeInsets.all(0),
-                  title: Text('Referal Saya'),
-                  trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
-                ),
-                Divider(),
-                ListTile(
-                  onTap: () {},
-                  contentPadding: EdgeInsets.all(0),
-                  title: Text('Tentang Aplikasi'),
-                  trailing: Icon(FontAwesomeIcons.chevronRight, size: 16),
-                ),
-                Divider(),
               ],
             ),
           ),

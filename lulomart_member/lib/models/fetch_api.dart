@@ -22,7 +22,6 @@ Future<List<Product>> fetchProduct(http.Client client) {
     } on SocketException catch (_) {
       print('not connected');
     }
-
     // Use the compute function to run parsePhotos in a separate isolate
     return compute(parseData, response.body);
   });
