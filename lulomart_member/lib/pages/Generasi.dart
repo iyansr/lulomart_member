@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Generasi extends StatelessWidget {
+  final String gen;
+  Generasi({this.gen});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,7 @@ class Generasi extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Generasi',
+          'Generasi $gen',
           style: TextStyle(color: Colors.black87),
         ),
         bottom: AppBar(

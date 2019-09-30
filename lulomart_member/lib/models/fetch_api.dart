@@ -12,18 +12,16 @@ Future<List<Product>> fetchProduct(http.Client client) {
   return _memoizer.runOnce(() async {
     final response = await client.get(
         'https://www.lulomart.com/inventory/index.php/api/productbycategory?productcategory_id=');
-    try {
-      final result = await InternetAddress.lookup('https://www.lulomart.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('connected');
-        // Use the compute function to run parsePhotos in a separate isolate
-        return compute(parseData, response.body);
-      }
-    } on SocketException catch (_) {
-      print('not connected');
+
+    if (response.statusCode == 200) {
+      final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
+      List<Product> list =
+          parsed.map<Product>((json) => new Product.fromJson(json)).toList();
+      return list;
+    } else {
+      Exception('Failed');
     }
     // Use the compute function to run parsePhotos in a separate isolate
-    return compute(parseData, response.body);
   });
 }
 

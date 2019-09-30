@@ -1,11 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lulomart_member/widgets/generasiCard_card.dart';
-import 'package:lulomart_member/widgets/point_card.dart';
+
+import 'Generasi.dart';
 
 class GenerasiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<String> _totalGen = [
+      '25',
+      '625',
+      '225',
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -22,20 +30,28 @@ class GenerasiPage extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Point Saya',
+          'Generasi',
           style: TextStyle(color: Colors.black87),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: ListView(
-          children: <Widget>[
-            GenerasiCardWidget(color: Colors.blue, gen: 1),
-            GenerasiCardWidget(color: Colors.blue, gen: 2),
-            GenerasiCardWidget(color: Colors.blue, gen: 3),
-          ],
-        ),
-      ),
+          padding: const EdgeInsets.all(18.0),
+          child: ListView.builder(
+            itemCount: 3,
+            itemBuilder: (_, i) => GenerasiCardWidget(
+              gen: i + 1,
+              totalGen: _totalGen[i],
+              onTap: () {
+                Navigator.of(context).push(
+                  CupertinoPageRoute(
+                    builder: (context) => Generasi(
+                      gen: (i + 1).toString(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )),
     );
   }
 }

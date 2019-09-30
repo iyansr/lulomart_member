@@ -37,7 +37,7 @@ class OutletCard extends StatelessWidget {
             ),
           ),
           Container(
-            height: 110,
+            height: 115,
             // width: 100,
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: ListView.builder(

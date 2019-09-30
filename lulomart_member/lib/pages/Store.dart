@@ -4,9 +4,7 @@ import 'package:lulomart_member/models/product.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/outlet_card.dart';
 import 'package:http/http.dart' as http;
-import 'package:lulomart_member/widgets/product_grid.dart';
 import 'package:lulomart_member/widgets/rekomendasi_grid.dart';
-// import 'package:lulomart_member/widgets/product_grid_rekomendasi.dart';
 import 'package:lulomart_member/widgets/store_stacked_widget.dart';
 
 class Store extends StatefulWidget {

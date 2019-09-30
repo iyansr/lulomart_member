@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 
 class GenerasiCardWidget extends StatelessWidget {
   final Color color;
-  final Color textColor;
   final int gen;
-  GenerasiCardWidget({this.color, this.textColor = Colors.white, this.gen});
+  final String totalGen;
+  final VoidCallback onTap;
+  GenerasiCardWidget({
+    this.color = Colors.blue,
+    this.gen,
+    this.totalGen,
+    @required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,7 @@ class GenerasiCardWidget extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: GestureDetector(
-          onTap: () {},
+          onTap: onTap,
           child: Card(
             color: color,
             child: Column(
@@ -23,14 +29,14 @@ class GenerasiCardWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8.0, top: 8.0),
                   child: Text(
                     'Generasi $gen',
-                    style: TextStyle(color: textColor),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    '32',
-                    style: TextStyle(color: textColor, fontSize: 46),
+                    '$totalGen',
+                    style: TextStyle(color: Colors.white, fontSize: 46),
                   ),
                 )
               ],
