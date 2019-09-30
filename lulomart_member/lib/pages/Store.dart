@@ -7,36 +7,15 @@ import 'package:http/http.dart' as http;
 import 'package:lulomart_member/widgets/rekomendasi_grid.dart';
 import 'package:lulomart_member/widgets/store_stacked_widget.dart';
 
-class Store extends StatefulWidget {
-  @override
-  _StoreState createState() => _StoreState();
-}
-
-class _StoreState extends State<Store> {
-  ScrollController _scrollController;
-  //Set Warna Statusbar
-
-  Styles _fontStyle = Styles();
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController = ScrollController();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
+class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _fontStyle = Styles();
     //============ Build ===================
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        controller: _scrollController,
         physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,8 +30,6 @@ class _StoreState extends State<Store> {
               height: 9,
               color: Colors.grey[50],
             ),
-            // CategoryBtn(),
-            // SizedBox(height: 8),
 
             FutureBuilder<List<Product>>(
               future: fetchProduct(http.Client()),
@@ -93,7 +70,7 @@ class _StoreState extends State<Store> {
                               padding: const EdgeInsets.all(32.0),
                               child: Text("ERROR OCCURRED, Tap to retry !"),
                             ),
-                            onTap: () => setState(() {}))
+                            onTap: () {})
                     : Container(
                         color: Colors.white,
                         height: 300,

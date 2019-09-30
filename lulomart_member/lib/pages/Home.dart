@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/models/provider.dart';
 import 'package:lulomart_member/pages/Cart.dart';
 import 'package:lulomart_member/pages/Discover.dart';
 import 'package:lulomart_member/pages/Profile.dart';
 import 'package:lulomart_member/pages/Store.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -21,8 +23,14 @@ class Home extends StatelessWidget {
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
-            Store(),
-            Discover(),
+            ChangeNotifierProvider(
+              builder: (_) => FetchProduct(),
+              child: Store(),
+            ),
+            ChangeNotifierProvider(
+              builder: (_) => FetchProduct(),
+              child: Discover(),
+            ),
             CartPage(),
             Profile(),
           ],

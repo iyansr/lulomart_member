@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:async/async.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:lulomart_member/models/product.dart';
 
@@ -21,15 +19,5 @@ Future<List<Product>> fetchProduct(http.Client client) {
     } else {
       Exception('Failed');
     }
-    // Use the compute function to run parsePhotos in a separate isolate
   });
-}
-
-// A function that will convert a response body into a List<Product>
-List<Product> parseData(String responseBody) {
-  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
-  List<Product> list =
-      parsed.map<Product>((json) => new Product.fromJson(json)).toList();
-  return list;
 }

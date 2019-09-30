@@ -2,45 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
 import 'package:lulomart_member/models/product.dart';
+import 'package:lulomart_member/models/provider.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/cateory_button.dart';
 import 'package:lulomart_member/widgets/product_grid.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
-class Discover extends StatefulWidget {
-  @override
-  _DiscoverState createState() => _DiscoverState();
-}
-
-class _DiscoverState extends State<Discover> {
-  int len = 6;
-  List<Product> _pr;
-
-  ScrollController _controller = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _getMoreData();
-  }
-
-  void _getMoreData() {
-    _controller.addListener(() {
-      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
-        setState(() {
-          len = len + 6;
-
-          if (len > _pr.length) {
-            len = _pr.length;
-          }
-        });
-      }
-    });
-  }
-
+class Discover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ScrollController _controller = ScrollController();
     Styles _style = Styles();
+    List<Product> _pr;
+
+    final _provider = Provider.of<FetchProduct>(context);
+
+    _loadData() => _controller.addListener(() {
+          if (_controller.position.pixels ==
+              _controller.position.maxScrollExtent) {
+            _provider.setScrollLen(_pr.length);
+          }
+        });
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -77,6 +60,7 @@ class _DiscoverState extends State<Discover> {
                   if (snap.connectionState == ConnectionState.done) {
                     if (snap.hasData) {
                       _pr = snap.data;
+                      _loadData();
                       return Container(
                         color: Colors.white,
                         child: Column(
@@ -91,7 +75,7 @@ class _DiscoverState extends State<Discover> {
                               ),
                             ),
                             ProductGridView(
-                              len: len,
+                              len: _provider.scrollLen,
                               product: snap.data,
                             ),
                           ],
@@ -99,12 +83,11 @@ class _DiscoverState extends State<Discover> {
                       );
                     } else {
                       return InkWell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: Text("ERROR OCCURRED, Tap to retry !"),
-                        ),
-                        onTap: () => setState(() {}),
-                      );
+                          child: Padding(
+                            padding: const EdgeInsets.all(32.0),
+                            child: Text("ERROR OCCURRED, Tap to retry !"),
+                          ),
+                          onTap: () {});
                     }
                   }
 

@@ -25,7 +25,7 @@ class CategoryBtn extends StatelessWidget {
             ),
           ),
           Container(
-            height: 40,
+            height: 50,
             // width: 100,
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: ListView.builder(
@@ -36,14 +36,20 @@ class CategoryBtn extends StatelessWidget {
                   // width: 110,
                   child: Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: RaisedButton(
-                  color: Colors.red,
-                  onPressed: () {},
-                  child: Text(
-                    '${_kategori.kategori[id]['nama']}',
-                    style: _fontStyle.textWhite(),
-                  ),
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Text('${_kategori.kategori[id]['nama']}'),
                 ),
+
+                // RaisedButton(
+                //   color: Colors.red,
+                //   onPressed: () {},
+                //   child: Text(
+                //     '${_kategori.kategori[id]['nama']}',
+                //     style: _fontStyle.textWhite(),
+                //   ),
+                // ),
               )),
             ),
           ),
