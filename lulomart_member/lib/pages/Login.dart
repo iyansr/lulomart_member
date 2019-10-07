@@ -11,8 +11,7 @@ class Login extends StatefulWidget {
 class _Login extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    final logo = Image.network(
-        'https://www.lulomart.com/member/assets/img/logo_lulomart.png');
+    final logo = Image.asset('images/logo_lulomart.png');
 
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,

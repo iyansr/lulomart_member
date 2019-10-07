@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lulomart_member/models/fetch_api.dart';
 import 'package:lulomart_member/models/kategori_list.dart';
+import 'package:lulomart_member/models/kategory.dart';
 import 'package:lulomart_member/utils/styles.dart';
+import 'package:lulomart_member/widgets/kategori_grid.dart';
+import 'package:http/http.dart' as http;
 
 class CategoryBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    KategoriList _kategori = KategoriList();
     Styles _fontStyle = Styles();
+    List<Kategori> _kt;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -25,33 +29,22 @@ class CategoryBtn extends StatelessWidget {
             ),
           ),
           Container(
-            height: 50,
+            // height: 50,
             // width: 100,
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ListView.builder(
-              itemCount: _kategori.kategori.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, id) => Container(
-                  // height: 40,
-                  // width: 110,
-                  child: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Text('${_kategori.kategori[id]['nama']}'),
-                ),
-
-                // RaisedButton(
-                //   color: Colors.red,
-                //   onPressed: () {},
-                //   child: Text(
-                //     '${_kategori.kategori[id]['nama']}',
-                //     style: _fontStyle.textWhite(),
-                //   ),
-                // ),
-              )),
-            ),
+            child: FutureBuilder(
+                future: fetchKategori(http.Client()),
+                builder: (context, snapshot) {
+                  _kt = snapshot.data;
+                  if (snapshot.hasData) {
+                    return KategoriGrid(
+                      kategori: snapshot.data,
+                      len: _kt.length,
+                      onTap: () {},
+                    );
+                  }
+                  return CircularProgressIndicator();
+                }),
           ),
         ],
       ),

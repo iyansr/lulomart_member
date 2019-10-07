@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
 import 'package:lulomart_member/models/product.dart';
+import 'package:lulomart_member/models/rekomendasi.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/outlet_card.dart';
 import 'package:http/http.dart' as http;
@@ -31,8 +32,8 @@ class Store extends StatelessWidget {
               color: Colors.grey[50],
             ),
 
-            FutureBuilder<List<Product>>(
-              future: fetchProduct(http.Client()),
+            FutureBuilder<List<Rekomendasi>>(
+              future: fetchRekomen(http.Client()),
               builder: (c, snap) {
                 return snap.connectionState == ConnectionState.done
                     ? snap.hasData
@@ -60,7 +61,7 @@ class Store extends StatelessWidget {
                                   ),
                                 ),
                                 RekomendasiGrid(
-                                  product: snap.data,
+                                  rekomendasi: snap.data,
                                 ),
                               ],
                             ),
@@ -70,7 +71,9 @@ class Store extends StatelessWidget {
                               padding: const EdgeInsets.all(32.0),
                               child: Text("ERROR OCCURRED, Tap to retry !"),
                             ),
-                            onTap: () {})
+                            onTap: () {
+                              fetchProduct(http.Client());
+                            })
                     : Container(
                         color: Colors.white,
                         height: 300,

@@ -23,6 +23,27 @@ class RiwayatTransaksi extends StatelessWidget {
           style: TextStyle(color: Colors.black87),
         ),
       ),
+      body: Container(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 16.0),
+          child: ListView.separated(
+            itemCount: 10,
+            separatorBuilder: (c, i) => Divider(),
+            itemBuilder: (context, i) => Container(
+              child: ListTile(
+                onTap: () {},
+                title: Text('2018-10-16 19:12:23'),
+                subtitle: Text('Total : Rp. 20.000'),
+                trailing: Icon(
+                  FontAwesomeIcons.chevronRight,
+                  size: 16,
+                ),
+              ),
+            ),
+            shrinkWrap: true,
+          ),
+        ),
+      ),
     );
   }
 }
