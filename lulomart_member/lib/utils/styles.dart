@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulomart_member/ui/colors.dart';
 
 class Styles {
   TextStyle boldText() {
@@ -37,7 +38,7 @@ class Styles {
 
   TextStyle linkText() {
     return TextStyle(
-      color: Colors.red,
+      color: primaryColor,
       fontWeight: FontWeight.w700,
     );
   }

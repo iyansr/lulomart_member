@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulomart_member/ui/colors.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/cart_FAB.dart';
 import 'package:lulomart_member/widgets/cart_list.dart';
@@ -18,10 +19,12 @@ class _CartPageState extends State<CartPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: primaryColor,
         title: Text(
           'Daftar Belanja',
-          style: Styles().boldText20black(),
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
       body: SingleChildScrollView(

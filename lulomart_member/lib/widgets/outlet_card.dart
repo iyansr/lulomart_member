@@ -10,7 +10,6 @@ class OutletCard extends StatelessWidget {
     OutletModel _outlet = OutletModel();
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.0),
-      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -37,44 +36,50 @@ class OutletCard extends StatelessWidget {
             ),
           ),
           Container(
-            height: 115,
+            height: 100,
             // width: 100,
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: ListView.builder(
               itemCount: _outlet.outlet.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
-                height: 90,
-                width: 100,
+                // height: 110,
+                width: 110,
                 child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  semanticContainer: true,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  elevation: 0,
-                  child: Column(
-                    children: <Widget>[
-                      CachedNetworkImage(
-                        errorWidget: (c, u, o) => Text('error'),
-                        placeholder: (c, img) => Image.asset(
-                          'images/loading.gif',
-                          height: 80,
-                          width: 100,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6.0),
+                    ),
+                    semanticContainer: true,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    elevation: 0,
+                    child: Stack(
+                      children: <Widget>[
+                        CachedNetworkImage(
+                          errorWidget: (c, u, o) => Text('error'),
+                          placeholder: (c, img) => Image.asset(
+                            'images/loading.gif',
+                            height: 110,
+                            width: 110,
+                          ),
+                          imageUrl: _outlet.outlet[index]['image'],
+                          height: 110.0,
+                          width: 110.0,
+                          fit: BoxFit.cover,
                         ),
-                        imageUrl: _outlet.outlet[index]['image'],
-                        height: 80.0,
-                        width: 100.0,
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 3),
-                      Text(
-                        _outlet.outlet[index]['name'],
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            color: Color.fromRGBO(255, 255, 255, 0.70),
+                            height: 30,
+                            child: Center(
+                              child: Text(
+                                _outlet.outlet[index]['name'],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    )),
               ),
             ),
           ),

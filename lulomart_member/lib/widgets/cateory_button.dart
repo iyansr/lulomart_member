@@ -14,7 +14,7 @@ class CategoryBtn extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.0),
-      color: Colors.white,
+      // color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

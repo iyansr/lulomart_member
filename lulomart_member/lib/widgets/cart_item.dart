@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulomart_member/ui/colors.dart';
 
 class CartItem extends StatelessWidget {
   final int itemCount;
@@ -17,7 +18,7 @@ class CartItem extends StatelessWidget {
               leading: Container(
                 height: 80,
                 width: 80,
-                color: Colors.red,
+                color: primaryColor,
               ),
               title: Text('Waver Nabati'),
               subtitle: Text('20.000'),
