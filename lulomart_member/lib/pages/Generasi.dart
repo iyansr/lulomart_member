@@ -6,6 +6,8 @@ import 'package:lulomart_member/ui/colors.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:lulomart_member/widgets/generasi1_list.dart';
+import 'package:lulomart_member/widgets/generasi2_list.dart';
+import 'package:lulomart_member/widgets/generasi3_list.dart';
 
 class Generasi extends StatelessWidget {
   final String gen;
@@ -74,12 +76,26 @@ class Generasi extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
-        child: FutureBuilder<List<Generasi1>>(
-          future: fetchG1(http.Client()),
+        child: FutureBuilder(
+          future: gen == '1'
+              ? fetchG1(http.Client(), 'mmbr20181116171343100001')
+              : gen == '2'
+                  ? fetchG2(http.Client(), 'mmbr20181116171343100001')
+                  : gen == '3'
+                      ? fetchG3(http.Client(), 'mmbr20181116171343100001')
+                      : null,
           builder: (context, snap) {
             if (snap.connectionState == ConnectionState.done) {
               if (snap.hasData) {
-                return Generasi1List(generasi1: snap.data);
+                if (gen == '1') {
+                  return Generasi1List(generasi1: snap.data);
+                }
+                if (gen == '2') {
+                  return Generasi2List(generasi2: snap.data);
+                }
+                if (gen == '3') {
+                  return Generasi3List(generasi3: snap.data);
+                }
               }
             }
             return Center(
