@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/ui/colors.dart';
 
 class Generasi extends StatelessWidget {
   final String gen;
@@ -10,9 +11,9 @@ class Generasi extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: primaryColor,
         leading: IconButton(
-          color: Colors.black87,
+          // color: Colors.white,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -23,21 +24,43 @@ class Generasi extends StatelessWidget {
         ),
         title: Text(
           'Generasi $gen',
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(fontWeight: FontWeight.w700),
         ),
-        bottom: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 1,
-          backgroundColor: Colors.white,
-          title: Container(
-            height: 50,
-            child: TextFormField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(8.0),
-                icon: Icon(FontAwesomeIcons.search, size: 18),
-                hintText: 'Search...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(58),
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                print('appbar');
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6.0),
+                  color: Colors.white,
+                ),
+                height: 36.0,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        FontAwesomeIcons.search,
+                        color: primaryColor,
+                        size: 16.0,
+                      ),
+                      SizedBox(width: 16.0),
+                      Text(
+                        'Cari Generasi',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/pages/Home.dart';
+import 'package:lulomart_member/ui/colors.dart';
 // import 'package:login/home_page.dart';
 
 class Login extends StatefulWidget {
@@ -49,7 +50,7 @@ class _Login extends State<Login> {
           );
         },
         padding: EdgeInsets.all(12),
-        color: Colors.red,
+        color: primaryColor,
         child: Text('Log In', style: TextStyle(color: Colors.white)),
       ),
     );

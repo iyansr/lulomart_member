@@ -33,7 +33,7 @@ class ProductGridView extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6.0),
       ),
-      elevation: 0,
+      elevation: 3,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

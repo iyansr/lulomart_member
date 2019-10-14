@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/ui/colors.dart';
 import 'package:lulomart_member/widgets/point_card.dart';
 
 class PointPage extends StatelessWidget {
@@ -8,10 +9,9 @@ class PointPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
+        elevation: 0,
+        backgroundColor: primaryColor,
         leading: IconButton(
-          color: Colors.black87,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -22,7 +22,7 @@ class PointPage extends StatelessWidget {
         ),
         title: Text(
           'Point Saya',
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         ),
       ),
       body: Padding(

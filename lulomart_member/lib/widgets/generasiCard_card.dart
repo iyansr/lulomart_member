@@ -21,6 +21,10 @@ class GenerasiCardWidget extends StatelessWidget {
         child: GestureDetector(
           onTap: onTap,
           child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            elevation: 0,
             color: color,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

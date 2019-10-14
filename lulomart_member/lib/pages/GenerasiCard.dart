@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/ui/colors.dart';
 import 'package:lulomart_member/widgets/generasiCard_card.dart';
 
 import 'Generasi.dart';
@@ -17,10 +18,9 @@ class GenerasiPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
+        elevation: 0,
+        backgroundColor: primaryColor,
         leading: IconButton(
-          color: Colors.black87,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -31,7 +31,7 @@ class GenerasiPage extends StatelessWidget {
         ),
         title: Text(
           'Generasi',
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
       body: Padding(
@@ -39,6 +39,7 @@ class GenerasiPage extends StatelessWidget {
           child: ListView.builder(
             itemCount: 3,
             itemBuilder: (_, i) => GenerasiCardWidget(
+              color: primaryColor,
               gen: i + 1,
               totalGen: _totalGen[i],
               onTap: () {

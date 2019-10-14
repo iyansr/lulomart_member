@@ -13,7 +13,7 @@ class CategoryBtn extends StatelessWidget {
     List<Kategori> _kt;
 
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.only(bottom: 16.0),
       // color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

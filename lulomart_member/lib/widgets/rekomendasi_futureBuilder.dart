@@ -12,38 +12,8 @@ Widget futureRekomendasi(BuildContext context) {
     builder: (_, snap) {
       return snap.connectionState == ConnectionState.done
           ? snap.hasData
-              ? Container(
-                  color: scaffoldBg,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 16.0, bottom: 8.0, right: 16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              'Rekomendasi',
-                              style: Styles().boldText(),
-                            ),
-                            Text(
-                              'Lihat Semua',
-                              style: Styles().linkText(),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                        ),
-                        child: RekomendasiGrid(
-                          rekomendasi: snap.data,
-                        ),
-                      ),
-                    ],
-                  ),
+              ? RekomendasiGrid(
+                  rekomendasi: snap.data,
                 )
               : InkWell(
                   child: Padding(

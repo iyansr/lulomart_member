@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/models/kategory.dart';
+import 'package:lulomart_member/ui/colors.dart';
 
 class KategoriGrid extends StatelessWidget {
   final List<Kategori> kategori;
@@ -10,20 +11,17 @@ class KategoriGrid extends StatelessWidget {
 
   Widget getStructuredGridCell(Kategori kategori) {
     return Card(
+      color: primaryColor,
       elevation: 0,
       child: InkWell(
         onTap: onTap,
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Image.asset(
-                'images/cart.png',
-                height: 32,
-                width: 32,
-              ),
-              Text(kategori.name),
-            ],
+          child: Text(
+            kategori.name,
+            style: TextStyle(
+              color: scaffoldBg,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ),
@@ -37,7 +35,7 @@ class KategoriGrid extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       primary: true,
       crossAxisCount: 4,
-      childAspectRatio: 1.10,
+      childAspectRatio: 1.1,
       children: List.generate(len, (index) {
         return getStructuredGridCell(kategori[index]);
       }),

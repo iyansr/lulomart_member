@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/ui/colors.dart';
 
 class RiwayatTransaksi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
+        elevation: 0,
+        backgroundColor: primaryColor,
         leading: IconButton(
-          color: Colors.black87,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -20,7 +20,7 @@ class RiwayatTransaksi extends StatelessWidget {
         ),
         title: Text(
           'Riwayat Transaksi',
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
       body: Container(
