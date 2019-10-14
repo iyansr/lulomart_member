@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lulomart_member/models/fetch_api.dart';
+import 'package:lulomart_member/models/generasi1.dart';
 import 'package:lulomart_member/ui/colors.dart';
+
+import 'package:http/http.dart' as http;
+import 'package:lulomart_member/widgets/generasi1_list.dart';
 
 class Generasi extends StatelessWidget {
   final String gen;
@@ -69,25 +74,18 @@ class Generasi extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
-        child: ListView.separated(
-          itemCount: 10,
-          separatorBuilder: (c, i) => Divider(),
-          itemBuilder: (context, i) => Container(
-            child: ListTile(
-              title: Text('KM. DARMIASI'),
-              subtitle: Text('2018-10-16 19:12:23'),
-              trailing: SizedBox(
-                height: 20.0,
-                width: 20.0,
-                child: IconButton(
-                  padding: EdgeInsets.all(0.0),
-                  icon: Icon(Icons.more_vert, size: 18.0),
-                  onPressed: () {},
-                ),
-              ),
-            ),
-          ),
-          shrinkWrap: true,
+        child: FutureBuilder<List<Generasi1>>(
+          future: fetchG1(http.Client()),
+          builder: (context, snap) {
+            if (snap.connectionState == ConnectionState.done) {
+              if (snap.hasData) {
+                return Generasi1List(generasi1: snap.data);
+              }
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );
