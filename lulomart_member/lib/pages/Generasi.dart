@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
-import 'package:lulomart_member/models/generasi1.dart';
 import 'package:lulomart_member/ui/colors.dart';
 
 import 'package:http/http.dart' as http;

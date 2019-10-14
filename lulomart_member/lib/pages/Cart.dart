@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/ui/colors.dart';
-import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/cart_FAB.dart';
 import 'package:lulomart_member/widgets/cart_list.dart';
 

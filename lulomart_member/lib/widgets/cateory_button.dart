@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
-import 'package:lulomart_member/models/kategori_list.dart';
 import 'package:lulomart_member/models/kategory.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/kategori_grid.dart';

@@ -7,12 +7,6 @@ import 'package:lulomart_member/widgets/generasi_card_futureBuilder.dart';
 class GenerasiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> _totalGen = [
-      '25',
-      '625',
-      '225',
-    ];
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

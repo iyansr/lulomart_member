@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_member/models/fetch_api.dart';
-import 'package:lulomart_member/models/product.dart';
 import 'package:lulomart_member/models/rekomendasi.dart';
 import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/outlet_card.dart';

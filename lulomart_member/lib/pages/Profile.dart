@@ -7,14 +7,11 @@ import 'package:lulomart_member/pages/Referal.dart';
 import 'package:lulomart_member/pages/RiwayatTransaksi.dart';
 import 'package:lulomart_member/pages/Tentang.dart';
 import 'package:lulomart_member/ui/colors.dart';
-import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/profile_listTile.dart';
 
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Styles _style = Styles();
-
     List<String> _title = [
       'Riwayat Transaksi',
       'Point',

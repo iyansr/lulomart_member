@@ -3,7 +3,6 @@ import 'package:lulomart_member/models/fetch_api.dart';
 import 'package:lulomart_member/models/rekomendasi.dart';
 import 'package:http/http.dart' as http;
 import 'package:lulomart_member/ui/colors.dart';
-import 'package:lulomart_member/utils/styles.dart';
 import 'package:lulomart_member/widgets/rekomendasi_grid.dart';
 
 Widget futureRekomendasi(BuildContext context) {
